@@ -20,5 +20,32 @@ const initialFriends = [
 ];
 
 export default function App() {
-  return <div>Hello</div>;
+  const friends = initialFriends;
+
+  return (
+    <div className="app">
+      <div className="sidebar">
+        <FriendList friends={friends} />
+      </div>
+    </div>
+  );
+}
+
+function FriendList({ friends }) {
+  return (
+    <ul>
+      {friends.map((friend) => (
+        <Friend friend={friend} key={friend.id} />
+      ))}
+    </ul>
+  );
+}
+
+function Friend({ friend }) {
+  return (
+    <li>
+      <img src={friend.image} alt={friend.name} />
+      <h3>{friend.name}</h3>
+    </li>
+  );
 }
